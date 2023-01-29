@@ -27,7 +27,7 @@ public class ContractEvent {
   private Integer qty;
 
   @JsonProperty("price")
-  private BigDecimal price;
+  private String price;
 
   @JsonProperty("time")
   private String time;
@@ -76,11 +76,11 @@ public class ContractEvent {
     this.qty = qty;
   }
 
-  public BigDecimal getPrice() {
+  public String getPrice() {
     return price;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(String price) {
     this.price = price;
   }
 

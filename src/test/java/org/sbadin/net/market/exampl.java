@@ -17,9 +17,7 @@ public class exampl {
         AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "fff--ff-f--f-f-f-f-f");
         AlorApiWebSocketClient client = factory.newWebSocketClient();
 
-        AlorApiCallback<ContractEventData>
-
-         cb = new AlorApiCallback<ContractEventData>() {
+        AlorApiCallback<ContractEventData> cb = new AlorApiCallback<ContractEventData>() {
             @Override
             public void onResponse(ContractEventData response) {
                 System.out.println( response );
@@ -40,7 +38,7 @@ public class exampl {
 
         String guid = java.util.UUID.randomUUID().toString();
 
-      Closeable close =  client.onAllTradesGetAndSubscribe("NGF3", Exchange.MOEX, 10, false, guid, cb);
+      Closeable close =  client.onAllTradesGetAndSubscribe("NGG3", Exchange.MOEX, 10, false, guid, cb);
 
        sleep(4000);
 
