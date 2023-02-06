@@ -1,6 +1,7 @@
 package org.sbadin.net.market.allorConnect.impl;
 
 import org.sbadin.net.market.allorConnect.AlorApiRestClient;
+import org.sbadin.net.market.allorConnect.domain.Exchange;
 import org.sbadin.net.market.allorConnect.domain.TimeFrame;
 import org.sbadin.net.market.allorConnect.domain.general.History;
 
@@ -15,9 +16,9 @@ public class AlorApiRestClientImpl implements AlorApiRestClient {
     }
 
     @Override
-    public History getHistory(String symbol, String exchange, TimeFrame ft, Long startTime, Long endTime) {
+    public History getHistory(String symbol, Exchange exchange, TimeFrame ft, Long startTime, Long endTime) {
         Boolean untraded = false;
         String format = "Simple";
-        return AlorApiServiceGenerator.executeSync(alorApiService.historyOrder(symbol, exchange, ft, startTime, endTime, untraded, format));
+        return AlorApiServiceGenerator.executeSync(alorApiService.historyOrder(symbol, exchange.name(), ft, startTime, endTime, untraded, format));
     }
 }

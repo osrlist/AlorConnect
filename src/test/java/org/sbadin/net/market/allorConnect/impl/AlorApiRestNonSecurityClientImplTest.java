@@ -24,9 +24,9 @@ public class AlorApiRestNonSecurityClientImplTest  {
     @Ignore
     @Test
     public void testHistory() {
-        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "ffff-fff-f-f-f-f-ffff");
+        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "ffff-fff-f-f-f--f-f-ff");
         AlorApiRestClient client = factory.newRestClient();
-        History candle = client.getHistory("NGF3", "MOEX", TimeFrame.S60, 1673642940L, 1673642940L);
+        History candle = client.getHistory("NGG3", Exchange.MOEX, TimeFrame.S60, 1673642940L, 1673642940L);
         System.out.println( candle);
     }
 
