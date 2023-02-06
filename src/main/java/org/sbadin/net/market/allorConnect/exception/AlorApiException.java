@@ -67,7 +67,7 @@ public class AlorApiException extends RuntimeException {
   @Override
   public String getMessage() {
     if (error != null) {
-      return error.getMessage();
+      return error.getMessage()+ "  HTTP Code = " + error.getCode();
     }
     return super.getMessage();
   }

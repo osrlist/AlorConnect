@@ -92,6 +92,13 @@ public class AlorApiServiceGenerator {
      * Extracts and converts the response error body into an object.
      */
     public static AlorApiError getAlorApiError(Response<?> response) throws IOException, AlorApiException {
+        ResponseBody body = response.errorBody();
+        if (body.bytes().length == 0) {
+            AlorApiError apiError = new AlorApiError();
+            apiError.setCode( response.code() );
+            apiError.setMessage( response.message() );
+            return apiError;
+        }
         return errorBodyConverter.convert(response.errorBody());
     }
 

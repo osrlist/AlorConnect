@@ -4,7 +4,7 @@
   <groupId>org.sbadin.net.market</groupId>
   <artifactId>AlorConnect</artifactId>
   <packaging>jar</packaging>
-  <version>1.003-SNAPSHOT</version>
+  <version>1.004-SNAPSHOT</version>
   <name>AlorConnect</name>
 
   <properties>
