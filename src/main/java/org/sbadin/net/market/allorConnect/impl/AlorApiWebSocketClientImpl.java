@@ -13,6 +13,7 @@ import org.sbadin.net.market.allorConnect.config.AlorApiConfig;
 import org.sbadin.net.market.allorConnect.domain.ContractEventData;
 import org.sbadin.net.market.allorConnect.domain.EventData;
 import org.sbadin.net.market.allorConnect.domain.Exchange;
+import org.sbadin.net.market.allorConnect.domain.TradeEventData;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -85,6 +86,16 @@ public class AlorApiWebSocketClientImpl implements AlorApiWebSocketClient, Close
         objectMap.put("includeVirtualTrades", includeVirtualTrades);
 
         return createNewWebSocket(objectMap, guid, new AlorApiWebSocketListener<>(callback, ContractEventData.class));
+    }
+    @Override
+    public Closeable onTradesGetAndSubscribeV2(String portfolio, Exchange exchange, String guid, AlorApiCallback<TradeEventData> callback) {
+        Map<String, Object> objectMap = new HashMap<>();
+        objectMap.put("opcode", "TradesGetAndSubscribeV2");
+        objectMap.put("portfolio", portfolio);
+        objectMap.put("exchange", exchange.name());
+        objectMap.put("format", "Simple");
+
+        return createNewWebSocket(objectMap, guid, new AlorApiWebSocketListener<>(callback, TradeEventData.class));
     }
 
     @Override

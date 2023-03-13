@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import static java.lang.Thread.sleep;
 
-public class exampl {
+public class example {
 
     public static void main(String[] args) throws InterruptedException {
         AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "gfffgdfddadf9");
@@ -38,7 +38,7 @@ public class exampl {
 
         String guid = java.util.UUID.randomUUID().toString();
 
-      Closeable close =  client.onAllTradesGetAndSubscribe("NG-2.23", Exchange.MOEX, 0, false, guid, cb);
+      Closeable close =  client.onAllTradesGetAndSubscribe("NG-3.23", Exchange.MOEX, 0, false, guid, cb);
 
        sleep(8000);
 
