@@ -1,21 +1,26 @@
 package org.sbadin.net.market.allorConnect;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Alor API error object.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AlorApiError {
 
   /**
    * Error code.
    */
+  @JsonProperty("code")
   private int code;
 
   /**
    * Error message.
    */
+  @JsonProperty("message")
   private String message;
 
   public int getCode() {

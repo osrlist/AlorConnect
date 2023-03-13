@@ -17,6 +17,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 public class AlorApiServiceGenerator {
@@ -93,13 +94,15 @@ public class AlorApiServiceGenerator {
      */
     public static AlorApiError getAlorApiError(Response<?> response) throws IOException, AlorApiException {
         ResponseBody body = response.errorBody();
-        if (body.bytes().length == 0) {
+//        if (body.bytes().length == 0) {
             AlorApiError apiError = new AlorApiError();
             apiError.setCode( response.code() );
-            apiError.setMessage( response.message() );
-            return apiError;
-        }
-        return errorBodyConverter.convert(response.errorBody());
+            String error =  new String ( body.bytes(), StandardCharsets.UTF_8 );
+            apiError.setMessage( response.message() + ":" + error);
+//        }
+
+        return apiError;
+//        return errorBodyConverter.convert(response.errorBody());
     }
 
     public static <S> S createService(Class<S> serviceClass, String secret ) {

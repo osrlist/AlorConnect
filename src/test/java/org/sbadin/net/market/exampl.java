@@ -14,7 +14,7 @@ import static java.lang.Thread.sleep;
 public class exampl {
 
     public static void main(String[] args) throws InterruptedException {
-        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "fff--ff-f--f-f-f-f-f");
+        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "gfffgdfddadf9");
         AlorApiWebSocketClient client = factory.newWebSocketClient();
 
         AlorApiCallback<ContractEventData> cb = new AlorApiCallback<ContractEventData>() {
@@ -38,9 +38,9 @@ public class exampl {
 
         String guid = java.util.UUID.randomUUID().toString();
 
-      Closeable close =  client.onAllTradesGetAndSubscribe("NGG3", Exchange.MOEX, 10, false, guid, cb);
+      Closeable close =  client.onAllTradesGetAndSubscribe("NG-2.23", Exchange.MOEX, 0, false, guid, cb);
 
-       sleep(4000);
+       sleep(8000);
 
         try {
             close.close();

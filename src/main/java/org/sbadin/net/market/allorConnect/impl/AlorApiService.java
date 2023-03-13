@@ -1,6 +1,8 @@
 package org.sbadin.net.market.allorConnect.impl;
 
 import org.sbadin.net.market.allorConnect.config.AlorApiConfig;
+import org.sbadin.net.market.allorConnect.domain.OrderActions;
+import org.sbadin.net.market.allorConnect.domain.OrderActionsRequest;
 import org.sbadin.net.market.allorConnect.domain.TimeFrame;
 import org.sbadin.net.market.allorConnect.domain.Token;
 import org.sbadin.net.market.allorConnect.domain.general.History;
@@ -19,4 +21,8 @@ public interface AlorApiService {
 
     @POST("/refresh")
     Call<Token> getAccessToken(@Query("token") String token);
+
+    @Headers(AlorApiConfig.ENDPOINT_SECURITY_TYPE_APIKEY)
+    @POST("/commandapi/warptrans/TRADE/v2/client/orders/actions/limit")
+    Call<OrderActions> limitOrder(@Header("X-ALOR-REQID") String portfolioUid, @Body OrderActionsRequest order);
 }
