@@ -120,6 +120,21 @@ public class AlorApiRestNonSecurityClientImplTest  {
     }
 
 
+    @Ignore
+    @Test
+    public void testNewUpdateDeleteOrder() throws InterruptedException {
+        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "fffffffff");
+        AlorApiRestClient client = factory.newRestClient();
+
+        String portfolio = "1111111111";
+
+        OrderAction order = client.limitOrder(portfolio, Side.sell, 1, new BigDecimal("2.660"), "NG-3.23", Exchange.MOEX);
+        System.out.println( order );
+
+        OrderAction orderDelete = client.deleteLimitOrder(order.getOrderNumber(), portfolio, Exchange.MOEX, false);
+        System.out.println( orderDelete );
+    }
+
 
 
 }

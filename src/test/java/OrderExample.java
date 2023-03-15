@@ -10,7 +10,7 @@ import java.io.IOException;
 public class OrderExample {
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        AlorApiClientFactory factory = AlorApiClientFactory.newInstance( "bffffffffffffffffff");
+        AlorApiClientFactory factory = AlorApiClientFactory.newInstance( "ffffff-f-ff-f-f-f-f-f--f-f-f-f");
         AlorApiWebSocketClient client = factory.newWebSocketClient();
 
         AlorApiCallback<TradeEventData> cb = new AlorApiCallback<TradeEventData>() {
@@ -29,7 +29,7 @@ public class OrderExample {
 
         String guid = java.util.UUID.randomUUID().toString();
 
-        Closeable close =  client.onTradesGetAndSubscribeV2("11111111111111", Exchange.MOEX, guid, cb);
+        Closeable close =  client.onTradesGetAndSubscribeV2("111111111", Exchange.MOEX, guid, cb);
 
         close.close();
 

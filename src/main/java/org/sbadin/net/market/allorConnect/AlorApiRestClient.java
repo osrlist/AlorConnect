@@ -17,5 +17,5 @@ public interface AlorApiRestClient {
 
   OrderAction limitOrder(String portfolio, Side side, Integer quantity, BigDecimal price, String symbol, Exchange exchange);
   OrderAction updateLimitOrder( String orderId, String portfolio, Side side, Integer quantity, BigDecimal price, String symbol, Exchange exchange);
-  DeleteOrder deleteLimitOrder( String orderId, String portfolio, Exchange exchange, Boolean stop,Boolean jsonResponse);
+  OrderAction deleteLimitOrder( String orderId, String portfolio, Exchange exchange, Boolean stop);
 }

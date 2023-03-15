@@ -71,8 +71,9 @@ public class AlorApiRestClientImpl implements AlorApiRestClient {
     }
 
     @Override
-    public DeleteOrder deleteLimitOrder(String orderId, String portfolio, Exchange exchange, Boolean stop, Boolean jsonResponse) {
+    public OrderAction deleteLimitOrder(String orderId, String portfolio, Exchange exchange, Boolean stop) {
         String format = "Simple";
+        Boolean jsonResponse = true;
         return AlorApiServiceGenerator.executeSync(alorApiService.deleteLimitOrder(orderId, portfolio, exchange, stop, jsonResponse, format));
     }
 }

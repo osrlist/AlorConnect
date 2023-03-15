@@ -30,7 +30,7 @@ public interface AlorApiService {
                                        @Body OrderUpdateRequest order);
     @Headers(AlorApiConfig.ENDPOINT_SECURITY_TYPE_APIKEY)
     @DELETE("/commandapi/warptrans/TRADE/v2/client/orders/{orderId}")
-    Call<DeleteOrder> deleteLimitOrder(@Path("orderId") String orderId,
+    Call<OrderAction> deleteLimitOrder(@Path("orderId") String orderId,
                                        @Query("portfolio") String portfolio,
                                        @Query("exchange") Exchange exchange,
                                        @Query("stop") Boolean stop,
