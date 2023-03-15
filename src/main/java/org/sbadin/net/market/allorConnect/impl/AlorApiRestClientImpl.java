@@ -5,12 +5,8 @@ import org.sbadin.net.market.allorConnect.domain.*;
 import org.sbadin.net.market.allorConnect.domain.general.History;
 import org.sbadin.net.market.allorConnect.domain.general.Instrument;
 import org.sbadin.net.market.allorConnect.domain.general.User;
-import retrofit2.http.Body;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
 
 public class AlorApiRestClientImpl implements AlorApiRestClient {
 
@@ -28,7 +24,7 @@ public class AlorApiRestClientImpl implements AlorApiRestClient {
     }
 
     @Override
-    public OrderActions limitOrder(String portfolio, Side side, Integer quantity, BigDecimal price, String symbol, Exchange exchange) {
+    public OrderAction limitOrder(String portfolio, Side side, Integer quantity, BigDecimal price, String symbol, Exchange exchange) {
         String guid = java.util.UUID.randomUUID().toString();
         String portfolioUid = portfolio +";"+ guid;
 
@@ -50,5 +46,33 @@ public class AlorApiRestClientImpl implements AlorApiRestClient {
         return AlorApiServiceGenerator.executeSync(alorApiService.limitOrder(portfolioUid, order));
     }
 
+    @Override
+    public OrderAction updateLimitOrder(String orderId, String portfolio, Side side, Integer quantity, BigDecimal price, String symbol, Exchange exchange) {
+        String guid = java.util.UUID.randomUUID().toString();
+        String portfolioUid = portfolio +";"+ guid;
 
+        Instrument instrument = new Instrument();
+        instrument.setExchange( exchange );
+        instrument.setSymbol(symbol);
+
+        User user = new User();
+        user.setPortfolio( portfolio );
+
+        OrderUpdateRequest order = new OrderUpdateRequest();
+        order.setInstrument(instrument);
+        order.setUser(user);
+        order.setSide( side );
+        order.setType("limit");
+        order.setQuantity( quantity );
+        order.setPrice( price );
+        order.setId( orderId );
+
+        return AlorApiServiceGenerator.executeSync(alorApiService.updateLimitOrder(portfolioUid, orderId, order));
+    }
+
+    @Override
+    public DeleteOrder deleteLimitOrder(String orderId, String portfolio, Exchange exchange, Boolean stop, Boolean jsonResponse) {
+        String format = "Simple";
+        return AlorApiServiceGenerator.executeSync(alorApiService.deleteLimitOrder(orderId, portfolio, exchange, stop, jsonResponse, format));
+    }
 }

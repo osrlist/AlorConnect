@@ -1,11 +1,9 @@
 package org.sbadin.net.market.allorConnect.impl;
 
-import junit.framework.TestCase;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.sbadin.net.market.allorConnect.AlorApiClientFactory;
 import org.sbadin.net.market.allorConnect.AlorApiRestClient;
-import org.sbadin.net.market.allorConnect.AlorApiWebSocketClient;
 import org.sbadin.net.market.allorConnect.domain.*;
 import org.sbadin.net.market.allorConnect.domain.general.Candle;
 import org.sbadin.net.market.allorConnect.domain.general.History;
@@ -109,7 +107,7 @@ public class AlorApiRestNonSecurityClientImplTest  {
                 date = simpleDateFormat.format(new Date());
                 System.out.println(date);
 
-                OrderActions candle = client.limitOrder("1111111", Side.buy, 1, new BigDecimal("2.940"), "NG-3.23", Exchange.MOEX);
+                OrderAction candle = client.limitOrder("1111111", Side.buy, 1, new BigDecimal("2.940"), "NG-3.23", Exchange.MOEX);
                 t = false;
                 System.out.println(candle);
             }
@@ -118,7 +116,7 @@ public class AlorApiRestNonSecurityClientImplTest  {
                 sleep(100);
             }
         }
-        OrderActions candle = client.limitOrder("111111111111", Side.sell, 1, new BigDecimal("2.190"), "NG-3.23", Exchange.MOEX);
+        OrderAction candle = client.limitOrder("111111111111", Side.sell, 1, new BigDecimal("2.190"), "NG-3.23", Exchange.MOEX);
     }
 
 
