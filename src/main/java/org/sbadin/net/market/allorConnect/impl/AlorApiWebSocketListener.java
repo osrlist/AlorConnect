@@ -36,7 +36,7 @@ public class AlorApiWebSocketListener<T> extends WebSocketListener {
 
   @Override
   public void onMessage(WebSocket webSocket, String text) {
-      if (text.startsWith("{ \"data\":")) {
+      if (!text.startsWith("{\"requestGuid\":")) {
           try {
             T event = objectReader.readValue(text);
             callback.onResponse(event);
