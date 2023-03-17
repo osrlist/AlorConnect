@@ -37,6 +37,12 @@ public interface AlorApiService {
                                        @Query("jsonResponse") Boolean jsonResponse,
                                        @Query("format") String format
                                        );
+    @Headers(AlorApiConfig.ENDPOINT_SECURITY_TYPE_APIKEY)
+    @POST("/commandapi/warptrans/TRADE/v2/client/orders/actions/market")
+    Call<OrderAction> marketOrder(@Header("X-ALOR-REQID") String portfolioUid,
+                                  @Body MarketOrderRequest order
+    );
+
 
 
 }

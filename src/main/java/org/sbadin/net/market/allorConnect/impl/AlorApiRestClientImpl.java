@@ -76,4 +76,26 @@ public class AlorApiRestClientImpl implements AlorApiRestClient {
         Boolean jsonResponse = true;
         return AlorApiServiceGenerator.executeSync(alorApiService.deleteLimitOrder(orderId, portfolio, exchange, stop, jsonResponse, format));
     }
+
+    @Override
+    public OrderAction marketOrder(String portfolio, Side side, Integer quantity, String symbol, Exchange exchange) {
+        String guid = java.util.UUID.randomUUID().toString();
+        String portfolioUid = portfolio +";"+ guid;
+
+        Instrument instrument = new Instrument();
+        instrument.setExchange( exchange );
+        instrument.setSymbol(symbol);
+
+        User user = new User();
+        user.setPortfolio( portfolio );
+
+        MarketOrderRequest order = new MarketOrderRequest();
+        order.setInstrument(instrument);
+        order.setUser(user);
+        order.setSide( side );
+        order.setType("market");
+        order.setQuantity( quantity );
+
+        return AlorApiServiceGenerator.executeSync(alorApiService.marketOrder(portfolioUid, order));
+    }
 }
