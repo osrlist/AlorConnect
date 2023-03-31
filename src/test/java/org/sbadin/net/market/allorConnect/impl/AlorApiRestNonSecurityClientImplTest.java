@@ -135,6 +135,19 @@ public class AlorApiRestNonSecurityClientImplTest  {
         System.out.println( orderDelete );
     }
 
+    @Ignore
+    @Test
+    public void testStopLoss() throws InterruptedException {
+        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "ааааааааааааааааа");
+        AlorApiRestClient client = factory.newRestClient();
 
+        String portfolio = "54654";
+
+        OrderAction order = client.marketStopLoss(portfolio, Side.sell, 1,"NG-4.23",Exchange.MOEX, new BigDecimal("2.255"),  0L, Condition.less);
+        System.out.println( order );
+
+        OrderAction orderDelete = client.deleteLimitOrder(order.getOrderNumber(), portfolio, Exchange.MOEX, true);
+        System.out.println( orderDelete );
+    }
 
 }

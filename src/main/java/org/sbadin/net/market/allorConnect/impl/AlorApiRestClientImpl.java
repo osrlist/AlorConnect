@@ -98,4 +98,30 @@ public class AlorApiRestClientImpl implements AlorApiRestClient {
 
         return AlorApiServiceGenerator.executeSync(alorApiService.marketOrder(portfolioUid, order));
     }
+
+    @Override
+    public OrderAction marketStopLoss(String portfolio, Side side, Integer quantity, String symbol, Exchange exchange, BigDecimal triggerPrice, Long orderEndUnixTime, Condition condition) {
+        String guid = java.util.UUID.randomUUID().toString();
+        String portfolioUid = portfolio +";"+ guid;
+
+        Instrument instrument = new Instrument();
+        instrument.setExchange( exchange );
+        instrument.setSymbol(symbol);
+
+        User user = new User();
+        user.setPortfolio( portfolio );
+
+        MarketStoplossRequest order = new MarketStoplossRequest();
+        order.setInstrument(instrument);
+        order.setUser(user);
+        order.setSide( side );
+        order.setTriggerPrice( triggerPrice );
+        order.setQuantity( quantity );
+        order.setOrderEndUnixTime(orderEndUnixTime);
+        order.setCondition(condition);
+        return AlorApiServiceGenerator.executeSync(alorApiService.marketStopLoss( portfolioUid, order));
+
+    }
+
+
 }

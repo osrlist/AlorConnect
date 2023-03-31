@@ -43,6 +43,11 @@ public interface AlorApiService {
                                   @Body MarketOrderRequest order
     );
 
+    @Headers(AlorApiConfig.ENDPOINT_SECURITY_TYPE_APIKEY)
+    @POST("/commandapi/warptrans/TRADE/v2/client/orders/actions/stop")
+    Call<OrderAction> marketStopLoss(@Header("X-ALOR-REQID") String portfolioUid,
+                                     @Body MarketStoplossRequest order
+    );
 
 
 }
