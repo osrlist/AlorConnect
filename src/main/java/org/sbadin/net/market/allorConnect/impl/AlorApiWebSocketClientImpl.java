@@ -10,10 +10,7 @@ import okhttp3.WebSocket;
 import org.sbadin.net.market.allorConnect.AlorApiCallback;
 import org.sbadin.net.market.allorConnect.AlorApiWebSocketClient;
 import org.sbadin.net.market.allorConnect.config.AlorApiConfig;
-import org.sbadin.net.market.allorConnect.domain.ContractEventData;
-import org.sbadin.net.market.allorConnect.domain.EventData;
-import org.sbadin.net.market.allorConnect.domain.Exchange;
-import org.sbadin.net.market.allorConnect.domain.TradeEventData;
+import org.sbadin.net.market.allorConnect.domain.*;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -96,6 +93,17 @@ public class AlorApiWebSocketClientImpl implements AlorApiWebSocketClient, Close
         objectMap.put("format", "Simple");
 
         return createNewWebSocket(objectMap, guid, new AlorApiWebSocketListener<>(callback, TradeEventData.class));
+    }
+
+    @Override
+    public Closeable onStopOrdersGetAndSubscribeV2(String portfolio, Exchange exchange, String guid, AlorApiCallback<StopLimitEventData> callback) {
+        Map<String, Object> objectMap = new HashMap<>();
+        objectMap.put("opcode", "StopOrdersGetAndSubscribeV2");
+        objectMap.put("portfolio", portfolio);
+        objectMap.put("exchange", exchange.name());
+        objectMap.put("format", "Simple");
+
+        return createNewWebSocket(objectMap, guid, new AlorApiWebSocketListener<>(callback, StopLimitEventData.class));
     }
 
     @Override
