@@ -94,4 +94,155 @@ public class StopLimitEvent {
         .toString();
   }
 
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Long getExchangeOrderId() {
+    return exchangeOrderId;
+  }
+
+  public void setExchangeOrderId(Long exchangeOrderId) {
+    this.exchangeOrderId = exchangeOrderId;
+  }
+
+  public String getSymbol() {
+    return symbol;
+  }
+
+  public void setSymbol(String symbol) {
+    this.symbol = symbol;
+  }
+
+  public String getBrokerSymbol() {
+    return brokerSymbol;
+  }
+
+  public void setBrokerSymbol(String brokerSymbol) {
+    this.brokerSymbol = brokerSymbol;
+  }
+
+  public String getPortfolio() {
+    return portfolio;
+  }
+
+  public void setPortfolio(String portfolio) {
+    this.portfolio = portfolio;
+  }
+
+  public Exchange getExchange() {
+    return exchange;
+  }
+
+  public void setExchange(Exchange exchange) {
+    this.exchange = exchange;
+  }
+
+  public TypeRequest getType() {
+    return type;
+  }
+
+  public void setType(TypeRequest type) {
+    this.type = type;
+  }
+
+  public Side getSide() {
+    return side;
+  }
+
+  public void setSide(Side side) {
+    this.side = side;
+  }
+
+  public Condition getCondition() {
+    return condition;
+  }
+
+  public void setCondition(Condition condition) {
+    this.condition = condition;
+  }
+
+  public StatusRequest getStatus() {
+    return status;
+  }
+
+  public void setStatus(StatusRequest status) {
+    this.status = status;
+  }
+
+  public String getTransTime() {
+    return transTime;
+  }
+
+  public void setTransTime(String transTime) {
+    this.transTime = transTime;
+  }
+
+  public String getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(String endTime) {
+    this.endTime = endTime;
+  }
+
+  public Integer getQtyUnits() {
+    return qtyUnits;
+  }
+
+  public void setQtyUnits(Integer qtyUnits) {
+    this.qtyUnits = qtyUnits;
+  }
+
+  public Integer getQtyBatch() {
+    return qtyBatch;
+  }
+
+  public void setQtyBatch(Integer qtyBatch) {
+    this.qtyBatch = qtyBatch;
+  }
+
+  public Integer getQty() {
+    return qty;
+  }
+
+  public void setQty(Integer qty) {
+    this.qty = qty;
+  }
+
+  public String getPrice() {
+    return price;
+  }
+
+  public void setPrice(String price) {
+    this.price = price;
+  }
+
+  public String getAvg_price() {
+    return avg_price;
+  }
+
+  public void setAvg_price(String avg_price) {
+    this.avg_price = avg_price;
+  }
+
+  public String getStopPrice() {
+    return stopPrice;
+  }
+
+  public void setStopPrice(String stopPrice) {
+    this.stopPrice = stopPrice;
+  }
+
+  public Boolean getExisting() {
+    return existing;
+  }
+
+  public void setExisting(Boolean existing) {
+    this.existing = existing;
+  }
 }

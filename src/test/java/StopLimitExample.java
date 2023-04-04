@@ -3,7 +3,6 @@ import org.sbadin.net.market.allorConnect.AlorApiClientFactory;
 import org.sbadin.net.market.allorConnect.AlorApiWebSocketClient;
 import org.sbadin.net.market.allorConnect.domain.Exchange;
 import org.sbadin.net.market.allorConnect.domain.StopLimitEventData;
-import org.sbadin.net.market.allorConnect.domain.TradeEventData;
 
 import java.io.Closeable;
 import java.io.IOException;
