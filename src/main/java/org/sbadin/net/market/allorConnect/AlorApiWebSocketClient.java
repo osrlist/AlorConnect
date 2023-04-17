@@ -14,6 +14,7 @@ public interface AlorApiWebSocketClient extends Closeable {
     Closeable onTradesGetAndSubscribeV2(String portfolio, Exchange exchange, String guid, AlorApiCallback<TradeEventData> callback);
 
     Closeable onStopOrdersGetAndSubscribeV2(String portfolio, Exchange exchange, String guid, AlorApiCallback<StopLimitEventData> callback);
+    Closeable onPositionV2(String portfolio, Exchange exchange, String guid, AlorApiCallback<PositionEventData> callback);
 
     Closeable onUnsubscribe(String guid, AlorApiCallback<EventData> callback);
 

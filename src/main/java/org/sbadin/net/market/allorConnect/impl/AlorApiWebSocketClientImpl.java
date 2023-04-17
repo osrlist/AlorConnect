@@ -107,6 +107,17 @@ public class AlorApiWebSocketClientImpl implements AlorApiWebSocketClient, Close
     }
 
     @Override
+    public Closeable onPositionV2(String portfolio, Exchange exchange, String guid, AlorApiCallback<PositionEventData> callback) {
+        Map<String, Object> objectMap = new HashMap<>();
+        objectMap.put("opcode", "PositionsGetAndSubscribeV2");
+        objectMap.put("portfolio", portfolio);
+        objectMap.put("exchange", exchange.name());
+        objectMap.put("format", "Simple");
+
+        return createNewWebSocket(objectMap, guid, new AlorApiWebSocketListener<>(callback, PositionEventData.class));
+    }
+
+    @Override
     public Closeable onUnsubscribe(String guid, AlorApiCallback<EventData> callback) {
         Map<String, Object> objectMap = new HashMap<>();
         objectMap.put("opcode", "unsubscribe");
