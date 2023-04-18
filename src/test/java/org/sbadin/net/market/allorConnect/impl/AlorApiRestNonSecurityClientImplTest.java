@@ -150,4 +150,39 @@ public class AlorApiRestNonSecurityClientImplTest  {
         System.out.println( orderDelete );
     }
 
+    @Ignore
+    @Test
+    public void testOrders() throws InterruptedException {
+        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "ывафвыаываыуцав");
+        AlorApiRestClient client = factory.newRestClient();
+
+        String portfolio = "ывафывава";
+
+        List<LimitOrder> order = client.orders (portfolio,Exchange.MOEX);
+        for (LimitOrder i : order) {
+            if (i.getStatus() == StatusRequest.working) {
+                System.out.println(  i );
+            }
+
+        }
+    }
+
+    @Ignore
+    @Test
+    public void testStopOrders() throws InterruptedException {
+        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "b5авпыапавп");
+        AlorApiRestClient client = factory.newRestClient();
+
+        String portfolio = "авыпавып";
+
+        List<StopLimitEvent> order = client.stopOrders (portfolio,Exchange.MOEX);
+        for (StopLimitEvent i : order) {
+            if (i.getStatus() == StatusRequest.working) {
+                System.out.println(  i );
+            }
+
+        }
+    }
+
+
 }

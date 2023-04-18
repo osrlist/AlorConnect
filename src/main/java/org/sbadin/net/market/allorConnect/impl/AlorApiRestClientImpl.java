@@ -7,6 +7,7 @@ import org.sbadin.net.market.allorConnect.domain.general.Instrument;
 import org.sbadin.net.market.allorConnect.domain.general.User;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class AlorApiRestClientImpl implements AlorApiRestClient {
 
@@ -121,6 +122,17 @@ public class AlorApiRestClientImpl implements AlorApiRestClient {
         order.setCondition(condition);
         return AlorApiServiceGenerator.executeSync(alorApiService.marketStopLoss( portfolioUid, order));
 
+    }
+
+    @Override
+    public List<LimitOrder> orders(String portfolio, Exchange exchange) {
+        return AlorApiServiceGenerator.executeSync(alorApiService.orders( portfolio,exchange, "Simple" ));
+
+    }
+
+    @Override
+    public List<StopLimitEvent> stopOrders(String portfolio, Exchange exchange) {
+        return AlorApiServiceGenerator.executeSync(alorApiService.stopOrders( portfolio,exchange, "Simple" ));
     }
 
 

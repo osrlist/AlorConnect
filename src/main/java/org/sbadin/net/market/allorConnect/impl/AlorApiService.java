@@ -6,6 +6,8 @@ import org.sbadin.net.market.allorConnect.domain.general.History;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.List;
+
 public interface AlorApiService {
 
 
@@ -48,6 +50,22 @@ public interface AlorApiService {
     Call<OrderAction> marketStopLoss(@Header("X-ALOR-REQID") String portfolioUid,
                                      @Body MarketStoplossRequest order
     );
+
+
+    @Headers(AlorApiConfig.ENDPOINT_SECURITY_TYPE_APIKEY)
+    @GET("/md/v2/clients/{exchange}/{portfolio}/orders")
+    Call<List<LimitOrder>> orders(@Path("portfolio") String portfolio,
+                             @Path("exchange") Exchange exchange,
+                             @Query("format") String format
+    );
+
+    @Headers(AlorApiConfig.ENDPOINT_SECURITY_TYPE_APIKEY)
+    @GET("/md/v2/clients/{exchange}/{portfolio}/stoporders")
+    Call<List<StopLimitEvent>> stopOrders(@Path("portfolio") String portfolio,
+                                          @Path("exchange") Exchange exchange,
+                                          @Query("format") String format
+    );
+
 
 
 }

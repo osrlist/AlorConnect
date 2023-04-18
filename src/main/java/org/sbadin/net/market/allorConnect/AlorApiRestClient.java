@@ -1,14 +1,13 @@
 package org.sbadin.net.market.allorConnect;
 
+import org.sbadin.net.market.allorConnect.config.AlorApiConfig;
 import org.sbadin.net.market.allorConnect.domain.*;
 import org.sbadin.net.market.allorConnect.domain.general.History;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.Header;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 
 public interface AlorApiRestClient {
@@ -20,4 +19,10 @@ public interface AlorApiRestClient {
   OrderAction deleteLimitOrder( String orderId, String portfolio, Exchange exchange, Boolean stop);
   OrderAction marketOrder(String portfolio, Side side, Integer quantity,  String symbol, Exchange exchange);
   OrderAction marketStopLoss(String portfolio, Side side, Integer quantity,  String symbol, Exchange exchange, BigDecimal triggerPrice, Long orderEndUnixTime, Condition condition);
+
+  List<LimitOrder> orders( String portfolio, Exchange exchange );
+
+  List<StopLimitEvent> stopOrders( String portfolio, Exchange exchange );
+
+
 }
