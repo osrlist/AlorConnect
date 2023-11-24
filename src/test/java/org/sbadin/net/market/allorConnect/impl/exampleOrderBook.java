@@ -1,25 +1,26 @@
-package org.sbadin.net.market;
+package org.sbadin.net.market.allorConnect.impl;
 
 import org.sbadin.net.market.allorConnect.AlorApiCallback;
 import org.sbadin.net.market.allorConnect.AlorApiClientFactory;
 import org.sbadin.net.market.allorConnect.AlorApiWebSocketClient;
 import org.sbadin.net.market.allorConnect.domain.ContractEventData;
 import org.sbadin.net.market.allorConnect.domain.Exchange;
+import org.sbadin.net.market.allorConnect.domain.OrderBook;
 
 import java.io.Closeable;
 import java.io.IOException;
 
 import static java.lang.Thread.sleep;
 
-public class example {
+public class exampleOrderBook {
 
     public static void main(String[] args) throws InterruptedException {
-        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "gfffgdfddadf9");
+        AlorApiClientFactory factory = AlorApiClientFactory.newInstance ( "b5sdfadfadsf9");
         AlorApiWebSocketClient client = factory.newWebSocketClient();
 
-        AlorApiCallback<ContractEventData> cb = new AlorApiCallback<ContractEventData>() {
+        AlorApiCallback<OrderBook> cb = new AlorApiCallback<OrderBook>() {
             @Override
-            public void onResponse(ContractEventData response) {
+            public void onResponse(OrderBook response) {
                 System.out.println( response );
             }
 
@@ -36,9 +37,9 @@ public class example {
 
  */
 
-        String guid = java.util.UUID.randomUUID().toString();
+      String guid = java.util.UUID.randomUUID().toString();
 
-      Closeable close =  client.onAllTradesGetAndSubscribe("NG-3.23", Exchange.MOEX, 0, false, guid, cb);
+      Closeable close = client.onOrderBookGetAndSubscribe("NG-11.23", Exchange.MOEX, 10, guid, cb);
 
        sleep(8000);
 
@@ -47,7 +48,7 @@ public class example {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //client.onUnsubscribe( guid, response -> System.out.println(response));
+//        client.onUnsubscribe( guid, response -> System.out.println(response));
 
         System.out.println("all done");
     }

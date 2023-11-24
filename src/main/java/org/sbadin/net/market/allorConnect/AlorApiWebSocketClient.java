@@ -18,5 +18,6 @@ public interface AlorApiWebSocketClient extends Closeable {
 
     Closeable onUnsubscribe(String guid, AlorApiCallback<EventData> callback);
 
+    Closeable onOrderBookGetAndSubscribe(String symbols, Exchange exchange, Integer depth, String guid, AlorApiCallback<OrderBook> callback);
 
 }

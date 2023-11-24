@@ -35,12 +35,12 @@ public class AlorApiRestNonSecurityClientImplTest  {
         Long endTime = System.currentTimeMillis();
         endTime = endTime / 1000;
 
-        TimeFrame tf = TimeFrame.D;
+        TimeFrame tf = TimeFrame.S60;
         int countCandle = 5;
 
-        History candle = client.getHistory("NG-2.23", Exchange.MOEX, tf, endTime, endTime);
+        History candle = client.getHistory("NG-10.23", Exchange.MOEX, tf, 1692597562L, 1692597562L);
         endTime = candle.getPrev();
-        candle = client.getHistory("NG-2.23", Exchange.MOEX, tf, endTime - countCandle * tf.getInputSec(), endTime);
+        candle = client.getHistory("NG-10.23", Exchange.MOEX, tf, endTime - countCandle * tf.getInputSec(), endTime);
 
         System.out.println( candle.getHistories().size());
 
@@ -49,7 +49,7 @@ public class AlorApiRestNonSecurityClientImplTest  {
             System.out.println( "не все получено");
             endTime = candle.getPrev();
             long mooCandle =  countCandle - list.size();
-            candle = client.getHistory("NG-2.23", Exchange.MOEX, tf, endTime - mooCandle * tf.getInputSec(), endTime);
+            candle = client.getHistory("NG-10.23", Exchange.MOEX, tf, endTime - mooCandle * tf.getInputSec(), endTime);
             System.out.println( candle.getHistories().size());
             System.out.println( candle);
             List<Candle> list2 = candle.getHistories();

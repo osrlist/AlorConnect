@@ -127,6 +127,20 @@ public class AlorApiWebSocketClientImpl implements AlorApiWebSocketClient, Close
     }
 
     @Override
+    public Closeable onOrderBookGetAndSubscribe(String symbol, Exchange exchange, Integer depth,  String guid, AlorApiCallback<OrderBook> callback) {
+        Map<String, Object> objectMap = new HashMap<>();
+
+        objectMap.put("opcode", "OrderBookGetAndSubscribe");
+        objectMap.put("code", symbol);
+        objectMap.put("exchange", exchange.name());
+        objectMap.put("format", "Simple");
+        objectMap.put("depth", depth);
+        objectMap.put("frequency", 0);
+
+        return createNewWebSocket(objectMap, guid, new AlorApiWebSocketListener<>(callback, OrderBook.class));
+    }
+
+    @Override
     public void close() throws IOException {
         System.out.println("close webSocket");
     }
